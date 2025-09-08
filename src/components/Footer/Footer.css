@@ -2,7 +2,7 @@
    Footer
 =========================== */
 .footer {
-  background-color: #0d0d1a;
+  background-color: var(--color-primary);
   color: #fff;
   font-size: var(--font-sm);
 }
@@ -64,12 +64,12 @@
   display: flex;
   align-items: flex-start;
   gap: var(--space-xs);
-  color: #eee;
+  color: #fff;
   font-size: var(--font-sm);
 }
 
 .footer__contacts-list i {
-  color: #fcb900;
+  color: #fff;
   min-width: 1rem;
   margin-top: 0.2rem;
 }
@@ -79,7 +79,7 @@
   font-size: var(--font-lg);
   font-weight: 800;
   margin-bottom: var(--space-sm);
-  color: #fcb900;
+  color: #fff;
 }
 
 /* Columna 3 */
@@ -114,7 +114,7 @@
 
 /* Parte inferior */
 .footer__bottom {
-  background-color: #050510;
+  background-color: var(--color-primary);
 }
 
 .footer__bottom .container {
