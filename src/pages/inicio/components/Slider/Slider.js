@@ -1,31 +1,40 @@
 export function initSlider(wrapper) {
   const slides = wrapper.querySelectorAll(".slide");
-  const prevBtn = wrapper.querySelector(".prev");
-  const nextBtn = wrapper.querySelector(".next");
+  const prevBtn = wrapper.querySelector(".slider__btn--prev");
+  const nextBtn = wrapper.querySelector(".slider__btn--next");
+  const dotsContainer = wrapper.querySelector(".slider__dots");
 
   let currentIndex = 0;
 
+  // Crear puntos dinámicamente
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll("button");
+
   function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === index);
+    slides.forEach((s, i) => {
+      s.classList.toggle("active", i === index);
+      dots[i].classList.toggle("active", i === index);
     });
+    currentIndex = index;
   }
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
+  function goToSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    showSlide(index);
   }
 
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-  }
+  prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
+  nextBtn.addEventListener("click", () => goToSlide(currentIndex + 1));
 
-  nextBtn.addEventListener("click", nextSlide);
-  prevBtn.addEventListener("click", prevSlide);
-
-  // Auto-play cada 5s
-  setInterval(nextSlide, 5000);
+  // Auto-play
+  setInterval(() => goToSlide(currentIndex + 1), 5000);
 
   // Mostrar primera slide
   showSlide(currentIndex);
