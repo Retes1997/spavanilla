@@ -1,0 +1,231 @@
+/* ===========================
+   Navbar base
+=========================== */
+.navbar {
+  width: 100%;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: var(--navbar-height);
+}
+
+/* Contenedor interno para limitar ancho */
+.navbar__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: var(--space-md) var(--space-lg);
+}
+
+/* ===========================
+   Logo
+=========================== */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar__logo-img {
+  height: 4.375rem; /* 70px */
+  max-height: 6.875rem; /* 110px */
+  width: auto;
+  object-fit: contain;
+  transition: opacity 0.1s ease;
+}
+
+.navbar__logo:hover .navbar__logo-img {
+  opacity: 0.75;
+}
+
+/* ===========================
+   Sección derecha
+=========================== */
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* ===========================
+   Redes sociales
+=========================== */
+.navbar__social {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.navbar__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: var(--font-sm);
+  width: 2rem;  /* 32px */
+  height: 2rem; /* 32px */
+  border-radius: var(--radius-sm);
+  transition: opacity 0.1s ease, box-shadow 0.1s ease;
+}
+
+.navbar__social-link:hover {
+  opacity: 0.8;
+  box-shadow: var(--shadow-md);
+}
+
+/* ===========================
+   Menú
+=========================== */
+.navbar__menu {
+  list-style: none;
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.navbar__menu-link {
+  position: relative;
+  text-decoration: none;
+  font-size: var(--font-base);
+  font-weight: 500;
+  color: var(--color-secondary);
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+/* Subrayado animado */
+.navbar__menu-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.navbar__menu-link:hover {
+  opacity: 0.8;
+  color: var(--color-primary);
+}
+
+.navbar__menu-link:hover::after {
+  width: 100%;
+}
+
+/* ===========================
+   Botón hamburguesa
+=========================== */
+.navbar__hamburger {
+  display: none;
+  position: relative;
+  width: 1.75rem; /* 28px */
+  height: 1.25rem; /* 20px */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.navbar__hamburger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #000;
+  border-radius: var(--radius-sm);
+  transition: 0.3s ease;
+}
+
+/* posición inicial */
+.navbar__hamburger span:nth-child(1) { top: 0; }
+.navbar__hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.navbar__hamburger span:nth-child(3) { bottom: 0; }
+
+/* estado activo → X */
+.navbar__hamburger--active span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.navbar__hamburger--active span:nth-child(2) { opacity: 0; }
+.navbar__hamburger--active span:nth-child(3) {
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* ===========================
+   Responsive intermedio (≤900px)
+=========================== */
+@media (max-width: 900px) {
+  .navbar {
+    min-height: var(--navbar-height-md);
+  }
+
+  .navbar__logo-img {
+    height: 3.4375rem; /* 55px */
+  }
+
+  .navbar__menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    width: 100vw;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .navbar__menu--active {
+    display: flex;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  .navbar__menu li { width: 100%; }
+
+  .navbar__menu-link {
+    display: block;
+    width: 100%;
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .navbar__menu-link:active,
+  .navbar__menu-link:focus {
+    background-color: var(--color-primary);
+    color: #fff;
+    outline: none;
+  }
+
+  .navbar__menu-link::after { display: none; }
+
+  .navbar__hamburger { display: flex; }
+}
+
+/* ===========================
+   Responsive pequeño (≤450px)
+=========================== */
+@media (max-width: 450px) {
+  .navbar {
+    min-height: var(--navbar-height-sm);
+  }
+
+  .navbar__logo-img {
+    height: 2.8125rem; /* 45px */
+  }
+
+  .navbar__social-link {
+    width: 1.625rem;  /* 26px */
+    height: 1.625rem; /* 26px */
+    font-size: var(--font-sm);
+  }
+}

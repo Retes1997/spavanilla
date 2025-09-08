@@ -1,0 +1,17 @@
+/* Reset mínimo para toda la SPA */
+
+/* Elimina márgenes y paddings por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tipografía base */
+body {
+  font-family: system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background: #fff;
+  color: #333;
+}

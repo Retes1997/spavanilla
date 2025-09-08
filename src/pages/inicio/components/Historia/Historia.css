@@ -1,0 +1,12 @@
+.historia {
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.historia h2 {
+  margin-bottom: 0.5rem;
+  color: #007bff;
+}

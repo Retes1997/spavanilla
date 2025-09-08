@@ -1,0 +1,13 @@
+.nosotros {
+  padding: 2rem;
+}
+
+.nosotros h1 {
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.nosotros p {
+  color: #444;
+  line-height: 1.5;
+}
