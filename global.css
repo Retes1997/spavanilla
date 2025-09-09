@@ -52,7 +52,8 @@ body {
   --space-2xl: 4rem;    /* 64px */
 
   /* Contenedor */
-  --container-width: 1200px;
+  --container-relative-width: 90%; /* porcentaje adaptable */
+  --container-max-width: 1200px;   /* límite máximo */
   --container-padding: var(--space-sm);
 
   /* Alturas de navbar */
@@ -113,7 +114,7 @@ small {
    Contenedor global
 =========================== */
 .container {
-  max-width: var(--container-width);
+  width: min(var(--container-relative-width), var(--container-max-width));
   margin: 0 auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
@@ -155,4 +156,32 @@ small {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ===========================
+   Botón WhatsApp flotante
+=========================== */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 28px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+.whatsapp-float i {
+  margin-top: 16px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 15px rgba(0,0,0,0.4);
 }

@@ -1,12 +1,11 @@
 import Slider from "./components/Slider/index.js";
-import Historia from "./components/Historia/Historia.js";
+import About from "./components/About/index.js";
 
 export default function InicioPage() {
   const wrapper = document.createElement("div");
-  wrapper.classList.add("inicio");
 
   wrapper.appendChild(Slider());
-  wrapper.appendChild(Historia());
+  wrapper.appendChild(About());
 
   return wrapper;
 }
